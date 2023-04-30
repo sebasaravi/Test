@@ -1,0 +1,16 @@
+.footer{
+    background-color:var(#ff250833);
+    padding: 5;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.link{
+    padding: 5;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.link:hover{
+    color:var(red);
+}
