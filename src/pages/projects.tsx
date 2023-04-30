@@ -1,14 +1,13 @@
+'use client'
 import React,{useEffect, useState} from "react"
-import { forEachLeadingCommentRange } from "typescript"
 
 const Projects = () =>{
-    const username ="sebasaravi"
     const[user, setUser] = useState('')
     const[repositories, setRepot] = useState([])
 
     const fetchUser = async () =>{
         try {
-            const response = await fetch(`https://api.github.com/users/${username}`)
+            const response = await fetch(`https://api.github.com/users/sebasaravi`)
             const data = await response.json()
             setUser(data)
             
@@ -16,7 +15,7 @@ const Projects = () =>{
             console.log("Error: ", error)    
         }
         try{
-            const responseRepo = await fetch(`https://api.github.com/users/${username}/repos`)
+            const responseRepo = await fetch(`https://api.github.com/users/sebasaravi/repos`)
             const rep = await responseRepo.json()
             setRepot(rep)
         }catch (error) {
@@ -37,14 +36,12 @@ const Projects = () =>{
                     <p>{user.bio}</p>
                 </div>
             )}
-            <ul>
-                {repositories && repositories.map(repo => (
-                    <li key={repo.id}>
-                        <a href={repo.html_url}>{repo.name}</a>
-                    </li>
-                ))}
-            </ul>
-    </article>
+            {repositories && repositories.map(repo => (
+                <li key={repo.id}>
+                    <a href={repo.html_url}>{repo.name}</a>
+                </li>
+            ))}
+        </article>
     )
 }
 
